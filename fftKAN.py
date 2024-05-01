@@ -29,6 +29,7 @@ class NaiveFourierKANLayer(th.nn.Module):
         xshp = x.shape
         outshape = xshp[0:-1]+(self.outdim,)
         x = th.reshape(x,(-1,self.inputdim))
+        #Starting at 1 because constant terms are in the bias
         k = th.reshape( th.arange(1,self.gridsize+1,device=x.device),(1,1,1,self.gridsize))
         xrshp = th.reshape(x,(x.shape[0],1,x.shape[1],1) ) 
         #This should be fused to avoid materializing memory
