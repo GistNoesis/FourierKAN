@@ -26,7 +26,10 @@ Code runs, cpu and gpu, but is untested.
 This is a naive version that use memory proportional to the gridsize, where as a fused version doesn't require temporary memory
 
 # Highlight of the core :
-https://github.com/GistNoesis/FourierKAN/blob/bed24e8e22d7adefd05ba168b421092901ac07f7/fftKAN.py#L28-L45
+You can either do the simple thing of materializing the product and then do the sum, or you can use einsum to do the reduction.
+Einsum should use less memory but be slower
+
+https://github.com/GistNoesis/FourierKAN/blob/9a8c75311b74ef9a858020edcc29e1a2059cb41e/fftKAN.py#L28-L58
 
 # License 
 
