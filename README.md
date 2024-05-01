@@ -2,7 +2,7 @@
 
 Pytorch Layer for FourierKAN
 
-It is a layer intented to be a substitution for Linear + non-linear activation
+It is a layer intended to be a substitution for Linear + non-linear activation
 
 This is inspired by Kolmogorov-Arnold Networks but using 1d fourier coefficients instead of splines coefficients
 It should be easier to optimize as fourier are more dense than spline (global vs local)
