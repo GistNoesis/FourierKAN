@@ -21,6 +21,8 @@ alternatively you can run
 
 to see the demo.
 
+Code runs, cpu and gpu, but is untested. 
+
 This is a naive version that use memory proportional to the gridsize, where as a fused version doesn't require temporary memory
 
 # Highlight of the core :
@@ -29,4 +31,3 @@ https://github.com/GistNoesis/FourierKAN/blob/e08674d4c45a4fb3c3802f529d0cc4a90b
 # License 
 
 License is MIT, but future evolutions (including fused kernels ) will be proprietary. 
-Code runs, cpu and gpu, but is untested. 
