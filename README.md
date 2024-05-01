@@ -14,10 +14,10 @@ Avoiding the issues of going out of grid
 put the file in the same directory 
 then 
 
-from fftKAN import NaiveFourierKANLayer
+```from fftKAN import NaiveFourierKANLayer```
 
 alternatively you can run 
-python fftKAN.py
+```python fftKAN.py```
 
 to see the demo.
 
