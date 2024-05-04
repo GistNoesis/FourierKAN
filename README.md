@@ -34,3 +34,8 @@ https://github.com/GistNoesis/FourierKAN/blob/9a8c75311b74ef9a858020edcc29e1a205
 # License 
 
 License is MIT, but future evolutions (including fused kernels ) will be proprietary. 
+
+# Fused Operations 
+This layer use a lot of memory, but by fusing operations we don't need any extra memory, and we can even use trigonometry tricks.
+
+https://github.com/GistNoesis/FusedFourierKAN
