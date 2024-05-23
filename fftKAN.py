@@ -8,18 +8,24 @@ import numpy as np
 #Avoiding the issues of going out of grid
 
 class NaiveFourierKANLayer(th.nn.Module):
-    def __init__( self, inputdim, outdim, gridsize,addbias=True):
+    def __init__( self, inputdim, outdim, gridsize, addbias=True, smooth_initialization=False):
         super(NaiveFourierKANLayer,self).__init__()
         self.gridsize= gridsize
         self.addbias = addbias
         self.inputdim = inputdim
         self.outdim = outdim
         
+        # With smooth_initialization, fourier coefficients are attenuated by the square of their frequency.
+        # This makes KAN's scalar functions smooth at initialization.
+        # Without smooth_initialization, high gridsizes will lead to high-frequency scalar functions,
+        # with high derivatives and low correlation between similar inputs.
+        grid_norm_factor = (th.arange(gridsize) + 1)**2 if smooth_initialization else np.sqrt(gridsize)
+        
         #The normalization has been chosen so that if given inputs where each coordinate is of unit variance,
         #then each coordinates of the output is of unit variance 
         #independently of the various sizes
         self.fouriercoeffs = th.nn.Parameter( th.randn(2,outdim,inputdim,gridsize) / 
-                                             (np.sqrt(inputdim) * np.sqrt(self.gridsize) ) )
+                                                (np.sqrt(inputdim) * grid_norm_factor ) )
         if( self.addbias ):
             self.bias  = th.nn.Parameter( th.zeros(1,outdim))
 
