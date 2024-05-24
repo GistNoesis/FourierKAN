@@ -25,6 +25,13 @@ Code runs, cpu and gpu, but is untested.
 
 This is a naive version that use memory proportional to the gridsize, where as a fused version doesn't require temporary memory
 
+# Training
+The higher frequency terms of the fourier coefficients may make the training difficult as the function will not be very smooth.
+
+[@JeremyIV](https://github.com/JeremyIV/FourierKAN) suggested a brownian noise intialisation for the fourier coefficients (See PR https://github.com/GistNoesis/FourierKAN/pull/4 ), you can try it by constructing the layer with the flag ```smooth_initialization=True```
+
+One usual way of dealing with Fourier higher frequency terms, is adding a regularization term which penalize the higher frequencies in the way you want. The merit of that being that the function will be enforced smoothed as training progresses, and not just at initialization. 
+
 # Highlight of the core :
 You can either do the simple thing of materializing the product and then do the sum, or you can use einsum to do the reduction.
 Einsum should use less memory but be slower
